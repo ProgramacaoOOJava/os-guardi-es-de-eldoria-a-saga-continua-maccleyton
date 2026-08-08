@@ -1,6 +1,7 @@
 package eldoria;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Classe principal que demonstra os conceitos de POO aplicados no sistema de personagens de Eldoria.
@@ -13,12 +14,22 @@ public class Main {
         System.out.println("Os Guardiões se preparam para a batalha!\n");
         
         // Criando uma lista polimórfica de personagens
-        
-        // Adicionando Magos à lista
-        
-        // Adicionando Guerreiros à lista
-        
-        // Percorrendo a lista e demonstrando polimorfismo
-        
-}
+        List<Personagem> membros = new ArrayList<>();
 
+        // Adicionando Magos à lista
+        membros.add(new Mago("Cronos", 10, 200, 500, 200));
+        membros.add(new Mago("Merlin", 8, 250, 400, 300));
+        // Adicionando Guerreiros à lista
+        membros.add(new Guerreiro("Prometeus", 5, 300, 600, 150));
+        membros.add(new Guerreiro("Arthur", 9, 350, 550, 350));
+
+        // Percorrendo a lista e demonstrando polimorfismo
+        System.out.println("\n--- Membros do Grupo ---");
+        for (Personagem personagem : membros) {
+            personagem.exibirStatus();
+            personagem.usarHabilidade();
+        }
+        System.out.println("----------------------------------------------");
+
+    }
+}
