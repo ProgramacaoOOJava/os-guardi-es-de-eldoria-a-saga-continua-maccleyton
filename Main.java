@@ -26,10 +26,29 @@ public class Main {
         // Percorrendo a lista e demonstrando polimorfismo
         System.out.println("\n--- Membros do Grupo ---");
         for (Personagem personagem : membros) {
-            personagem.exibirStatus();
+            System.out.println(personagem.toString());
             personagem.usarHabilidade();
+            
+            // Verificação com instanceof
+            if (personagem instanceof Mago) {
+                System.out.println("O personagem " + personagem.getNome() + " é um brilhante Mago de nível " + personagem.getNivel() + ".");
+            } else if (personagem instanceof Guerreiro) {
+                System.out.println("O personagem " + personagem.getNome() + " é um corajoso Guerreiro de nível " + personagem.getNivel() + ".");
+            }
+            System.out.println(); // Linha em branco
         }
         System.out.println("----------------------------------------------");
 
+        // Comparando personagens com equals
+        System.out.println("\n--- Comparação de Personagens ---");
+        Personagem p1 = membros.get(0);
+        Personagem p2 = membros.get(1);
+        
+        System.out.println("Comparando " + p1.getNome() + " com " + p2.getNome() + ":");
+        if (p1.equals(p2)) {
+            System.out.println("Eles são iguais (mesmo nome e classe).");
+        } else {
+            System.out.println("Eles são diferentes.");
+        }
     }
 }

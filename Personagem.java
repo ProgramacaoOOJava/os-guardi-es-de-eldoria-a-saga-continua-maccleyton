@@ -19,8 +19,8 @@ public abstract class Personagem {
     public Personagem(String nome, String classe, int nivel, int pontosDeVida, double poderBase) {
         this.nome = nome;
         this.classe = classe;
-        this.nivel = nivel;
-        this.pontosDeVida = pontosDeVida;
+        this.nivel = Math.max(0, nivel);
+        this.pontosDeVida = Math.max(0, pontosDeVida);
         this.poderBase = poderBase;
     }
 
@@ -66,9 +66,21 @@ public abstract class Personagem {
         this.nome = nome;
     }
 
+    public void setClasse(String classe) {
+        this.classe = classe;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = Math.max(0, nivel);
+    }
+
     // * Criar métodos que define os pontos de vida do personagem.
     public void setPontosDeVida(int pontosDeVida) {
-        this.pontosDeVida = pontosDeVida;
+        this.pontosDeVida = Math.max(0, pontosDeVida);
+    }
+
+    public void setPoderBase(double poderBase) {
+        this.poderBase = poderBase;
     }
 
     /**
@@ -77,7 +89,8 @@ public abstract class Personagem {
      */
     @Override
     public String toString() {
-        return "Personagem{nome='" + nome + "', classe='" + classe + "', nivel=" + nivel + "}";
+        return "Personagem [Nome=" + nome + ", Classe=" + classe + ", Nível=" + nivel + 
+               ", Vida=" + pontosDeVida + ", Poder=" + poderBase + "]";
     }
 
     /**
