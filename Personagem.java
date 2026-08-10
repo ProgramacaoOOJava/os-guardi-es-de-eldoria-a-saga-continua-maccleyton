@@ -40,6 +40,10 @@ public abstract class Personagem {
         System.out.println(); // Linha em branco
     }
 
+    protected void atribuirBencao(double valor) {
+        this.poderBase += valor;
+    }
+
     // Getters
     public String getNome() {
         return nome;

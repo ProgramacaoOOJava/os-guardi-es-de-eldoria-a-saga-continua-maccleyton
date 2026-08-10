@@ -26,18 +26,32 @@ public class Main {
         // Percorrendo a lista e demonstrando polimorfismo
         System.out.println("\n--- Membros do Grupo ---");
         for (Personagem personagem : membros) {
-            System.out.println(personagem.toString());
+            personagem.exibirStatus();
             personagem.usarHabilidade();
             
             // Verificação com instanceof
             if (personagem instanceof Mago) {
                 System.out.println("O personagem " + personagem.getNome() + " é um brilhante Mago de nível " + personagem.getNivel() + ".");
+                
+                // Registrando ação e chamando interface
+                Mago mago = (Mago) personagem;
+                mago.registrarAcao("Lançou um encanto de proteção elemental.");
+                
+                Auditavel auditavel = (Auditavel) personagem;
+                auditavel.auditarAcoes();
+                
             } else if (personagem instanceof Guerreiro) {
                 System.out.println("O personagem " + personagem.getNome() + " é um corajoso Guerreiro de nível " + personagem.getNivel() + ".");
             }
-            System.out.println(); // Linha em branco
+            
+            // Casting explícito para Personagem e atribuição de benção
+            Personagem p = (Personagem) personagem;
+            p.atribuirBencao(15.0);
+            System.out.println(">> O herói recebeu uma bênção, aumentando seu poder! Status atualizado:");
+            p.exibirStatus();
+            
+            System.out.println("==============================================");
         }
-        System.out.println("----------------------------------------------");
 
         // Comparando personagens com equals
         System.out.println("\n--- Comparação de Personagens ---");
